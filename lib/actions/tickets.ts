@@ -33,6 +33,7 @@ export async function createTicket(formData: FormData) {
   // 1. Extract values safely from the HTML FormData object
   const title = formData.get("title") as string;
   const description = formData.get("description") as string;
+  const priority = formData.get("priority") as string;
 
   // 2. Add a simple validation check to prevent empty submissions
   if (!title) {
@@ -45,7 +46,7 @@ export async function createTicket(formData: FormData) {
       title: title,
       description: description ?? "", // Fallback if description is blank
       status: "open",
-      priority: "medium",      
+      priority: priority,      
     },
   });
 
