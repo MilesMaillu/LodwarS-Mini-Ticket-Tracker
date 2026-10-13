@@ -17,12 +17,12 @@ model Ticket {
   id          String         @id @default(cuid()) // Secure, URL-friendly string ID
   title       String
   description String         @db.Text // Allows for long descriptions
-  status      String
-  priority    String
+  status      String         @default("TicketStatus")
+  priority    String         @default("TicketPriority")
 
   // Tracking timestamps
-  created_at   DateTime       @default(now())
-  updated_at   DateTime
+  created_at   DateTime      @default(now())
+  updated_at   DateTime      @updatedAt
 
   @@map("tickets") // Maps PascalCase model name to snake_case table name
 }

@@ -6,9 +6,10 @@ import { z } from "zod";
 
 const TicketSchema = z.object({
   title: z.string().min(1, "Ticket title is required"),
+  description: z.string().optional(),
 });
 
-export async function deleteProduct(formData: FormData) {
+export async function deleteTicket(formData: FormData) {
   const id = String(formData.get("id") || "");
 
   await prisma.ticket.deleteMany({
@@ -20,9 +21,11 @@ export async function updateStatus(formData: FormData) {
   const id = String(formData.get("id") || "");
   const status = String(formData.get("status") || "");
 
-  await prisma.ticket.deleteMany({
-    where: { id: id },
+  await prisma.ticket.updateMany({
+    where: { id: Number(id) }, 
+    data: { status: status }
   });
+  redirect("/tickets");
 }
 
 export async function createTicket(formData: FormData) {

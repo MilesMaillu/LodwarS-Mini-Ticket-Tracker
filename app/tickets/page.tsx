@@ -43,8 +43,14 @@ export default async function TicketsPage({
                 Manage tickets and track the status.
               </p>
               <Link
+                href="/tickets/stats"
+                className="ml-10 mr-10 px-6 py-3 bg-indigo-200 text-gray-800 rounded-lg hover:bg-indigo-300 float-right"
+              >
+                View Stats
+              </Link>
+              <Link
                 href="/create-ticket"
-                className="px-6 py-3 bg-gray-200 text-gray-800 rounded-lg hover:bg-gray-300 float-right"
+                className="ml-10 mr-10 px-6 py-3 bg-gray-200 text-gray-800 rounded-lg hover:bg-gray-300 float-right"
               >
                 Create Ticket
               </Link>
@@ -61,7 +67,7 @@ export default async function TicketsPage({
                 placeholder="Search tickets..."
                 className="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:border-transparent"
               />
-              <button className="px-6 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700">
+              <button className="px-6 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700">
                 Search
               </button>
             </form>
@@ -100,21 +106,34 @@ export default async function TicketsPage({
                       {ticket.description || "-"}
                     </td>
                     <td className="px-6 py-4  text-sm text-gray-900">
-                      ${ticket.priority}
+                      {ticket.priority}
                     </td>
                     <td className="px-6 py-4  text-sm text-gray-500">
                       {ticket.status || "-"}
                     </td>
                     <td className="px-6 py-4  text-sm text-gray-500">
-                      <form
-                        action={async (formData: FormData) => {
-                          "use server";
+                      <form 
+                        action={async (formData) => {
+                          'use server';
                           await updateStatus(formData);
-                        }}
-                      >
+                        }} 
+                        className="p-4" >
+                        <label htmlFor="status" className="block text-sm font-medium mb-1">
+                          Update Ticket Status:
+                        </label>
+                        <select
+                          id="status"
+                          name="status"
+                          className="p-2 border rounded bg-white text-gray-800"
+                        >
+                          <option value="">--select--</option>
+                          <option value="open">Open</option>
+                          <option value="in_progress">In Progress</option>
+                          <option value="closed">closed</option>
+                        </select>
                         <input type="hidden" name="id" value={ticket.id} />
-                        <button className="text-red-600 hover:text-red-900">
-                          Delete
+                        <button className="text-grey-600 hover:text-grey-900">
+                          Save
                         </button>
                       </form>
                     </td>

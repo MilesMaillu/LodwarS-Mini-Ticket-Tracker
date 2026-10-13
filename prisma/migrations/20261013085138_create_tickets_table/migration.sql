@@ -3,7 +3,7 @@ CREATE TYPE "TicketPriority" AS ENUM ('low', 'medium', 'high');
 
 -- CreateTable
 CREATE TABLE "public"."tickets" (
-    "id" SERIAL NOT NULL,
+    "id" TEXT NOT NULL,
     "title" TEXT NOT NULL,
     "description" TEXT,
     "status" "TicketStatus" NOT NULL DEFAULT 'open',

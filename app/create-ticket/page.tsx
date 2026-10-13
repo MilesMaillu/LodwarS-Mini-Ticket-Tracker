@@ -53,18 +53,18 @@ export default async function CreateTicketPage() {
               </div>
 
               <div className="flex gap-5">
-                <button
-                  type="submit"
-                  className="px-6 py-3 bg-purple-600 text-white rounded-lg hover:bg-purple-700"
-                >
-                  Submit
-                </button>
                 <Link
                   href="/tickets"
                   className="px-6 py-3 bg-gray-200 text-gray-800 rounded-lg hover:bg-gray-300"
                 >
                   Cancel
                 </Link>
+                <button
+                  type="submit"
+                  className="px-6 py-3 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700"
+                >
+                  Submit
+                </button>
               </div>
             </form>
           </div>
