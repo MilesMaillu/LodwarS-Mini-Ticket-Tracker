@@ -18,9 +18,10 @@ bun install
 ```
 *** We are using Prisma ORM package ***
 1. Open terminal, navigate into the project folder
-2. Run 'npx prisma init' to get started
+2. Run `npx prisma init` to get started
 3. Create the postgres database
 4. Set the DATABASE_URL variable in the .env file
+5. Run `npx prisma migrate deploy` to get migrations done
 
 First, run the development server:
 
