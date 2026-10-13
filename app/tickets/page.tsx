@@ -1,5 +1,6 @@
 import Pagination from "@/components/pagination";
 import { updateStatus } from "@/lib/actions/tickets";
+import { deleteTicket } from "@/lib/actions/tickets";
 import { prisma } from "@/lib/prisma";
 import Link from "next/link";
 
@@ -112,30 +113,49 @@ export default async function TicketsPage({
                       {ticket.status || "-"}
                     </td>
                     <td className="px-6 py-4  text-sm text-gray-500">
-                      <form 
-                        action={async (formData) => {
-                          'use server';
-                          await updateStatus(formData);
-                        }} 
-                        className="p-4" >
-                        <label htmlFor="status" className="block text-sm font-medium mb-1">
-                          Update Ticket Status:
-                        </label>
-                        <select
-                          id="status"
-                          name="status"
-                          className="p-2 border rounded bg-white text-gray-800"
+                      <div className="low-root">
+                        {/* Update ticket status */}
+                        <form 
+                          action={async (formData) => {
+                            'use server';
+                            await updateStatus(formData);
+                          }} 
+                          className="p-4 float-center inline"
+                          >
+                          <label htmlFor="status" className="block text-sm font-medium mb-1">
+                            Update Ticket Status:
+                          </label>
+                          <select
+                            id="status"
+                            name="status"
+                            className="p-2 border rounded bg-white text-gray-800"
+                            required
+                          >
+                            <option value="">--select--</option>
+                            <option value="open">Open</option>
+                            <option value="in_progress">In Progress</option>
+                            <option value="closed">closed</option>
+                          </select>
+                          <input type="hidden" name="id" value={ticket.id} />
+                          <button className="px-2 py-1 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700">
+                            Save
+                          </button>
+                        </form>
+                        {/* Delete ticket */}
+                        <form
+                          action={async (formData: FormData) => {
+                            "use server";
+                            await deleteTicket(formData);
+                          }}
+                          className="ml-15 mr-15 inline"
                         >
-                          <option value="">--select--</option>
-                          <option value="open">Open</option>
-                          <option value="in_progress">In Progress</option>
-                          <option value="closed">closed</option>
-                        </select>
-                        <input type="hidden" name="id" value={ticket.id} />
-                        <button className="text-grey-600 hover:text-grey-900">
-                          Save
-                        </button>
-                      </form>
+                          <input type="hidden" name="id" value={ticket.id} />
+                          <button className="px-2 py-1 bg-gray-600 text-white rounded-lg hover:bg-gray-700">
+                            Delete
+                          </button>
+                        </form>
+                        
+                      </div>
                     </td>
                   </tr>
                 ))}

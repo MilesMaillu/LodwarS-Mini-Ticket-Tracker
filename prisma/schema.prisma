@@ -12,11 +12,11 @@ datasource db {
   provider = "postgresql"
 }
 
-// 2. The New Ticket Model
+// The New Ticket Model
 model Ticket {
-  id          String         @id @default(cuid()) // Secure, URL-friendly string ID
+  id    Int    @id @default(autoincrement())
   title       String
-  description String         @db.Text // Allows for long descriptions
+  description String?        @db.Text // Allows for long descriptions
   status      String         @default("TicketStatus")
   priority    String         @default("TicketPriority")
 

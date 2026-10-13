@@ -24,24 +24,24 @@ export default async function CreateTicketPage() {
             <form className="space-y-6" action={createTicket}>
               <div>
                 <label
-                  htmlFor="name"
+                  htmlFor="title"
                   className="block text-sm font-medium text-gray-700 mb-2"
                 >
                   Title *
                 </label>
                 <input
-                  type="text"
-                  id="title"
-                  name="title"
-                  required
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:border-transparent"
+                  type="text" 
+                  id="title" 
+                  name="title" 
+                  required 
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:border-transparent" 
                   placeholder="Enter Title"
                 />
               </div>
 
               <div>
                 <label
-                  htmlFor="sku"
+                  htmlFor="description"
                   className="block text-sm font-medium text-gray-700 mb-2"
                 >
                   Description (optional)
@@ -52,7 +52,29 @@ export default async function CreateTicketPage() {
                   placeholder="Enter Description"></textarea>                
               </div>
 
-              <div className="flex gap-5">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-2">
+                <div>
+                  <label
+                    htmlFor="priority"
+                    className="block text-sm font-medium text-gray-700 mb-2"
+                  >
+                    Priority *
+                  </label>
+                  <select
+                    id="priority"
+                    name="priority"
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:border-transparent" 
+                    required
+                  >
+                    <option value="">--select--</option>
+                    <option value="high">High</option>
+                    <option value="medium">Medium</option>
+                    <option value="low">Low</option>
+                  </select>
+                </div>
+              </div>
+
+              <div className="flex gap-5 mt-15">
                 <Link
                   href="/tickets"
                   className="px-6 py-3 bg-gray-200 text-gray-800 rounded-lg hover:bg-gray-300"

@@ -38,5 +38,8 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 
 ## NOTE
 The search function is not completed
-The create ticket route does not behave correctly due to dependency challenges
-I created this on Ubuntu platform
+The create ticket route does not behave correctly due to dependency challenges...
+***I fixed the create-ticket challenge and made a late commit***
+
+
+*** Code done on VS-code in Ubuntu ***
