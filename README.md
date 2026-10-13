@@ -1,5 +1,10 @@
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
+## Tech Stack
+Backend: Node.js
+Database: PostgreSQL 
+Frontend: NextJS
+
 ## Getting Started
 After cloning...to install the dependencies, run:
 ```bash
@@ -11,7 +16,11 @@ pnpm install
 # or
 bun install
 ```
-
+*** We are using Prisma ORM package ***
+1. Open terminal, navigate into the project folder
+2. Run 'npx prisma init' to get started
+3. Create the postgres database
+4. Set the DATABASE_URL variable in the .env file
 
 First, run the development server:
 
