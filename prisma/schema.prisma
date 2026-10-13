@@ -11,3 +11,18 @@ generator client {
 datasource db {
   provider = "postgresql"
 }
+
+// 2. The New Ticket Model
+model Ticket {
+  id          String         @id @default(cuid()) // Secure, URL-friendly string ID
+  title       String
+  description String         @db.Text // Allows for long descriptions
+  status      String
+  priority    String
+
+  // Tracking timestamps
+  created_at   DateTime       @default(now())
+  updated_at   DateTime
+
+  @@map("tickets") // Maps PascalCase model name to snake_case table name
+}
