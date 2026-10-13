@@ -5,7 +5,7 @@ export default async function CreateTicketPage() {
   return (
     <div className="min-h-screen bg-gray-50">
 
-      <main className="ml-64 p-8">
+      <main className="ml-40 mr-40 p-8">
         <div className="mb-8">
           <div className="flex items-center justify-between">
             <div>

@@ -4,6 +4,8 @@ import { deleteTicket } from "@/lib/actions/tickets";
 import { prisma } from "@/lib/prisma";
 import Link from "next/link";
 
+export const instant = false;
+
 export default async function TicketsPage({
   searchParams,
 }: {
@@ -33,7 +35,7 @@ export default async function TicketsPage({
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <main className="ml-64 p-8">
+      <main className="ml-40 mr-40 p-8">
         <div className="mb-8">
           <div className="flex items-center justify-between">
             <div className="w-full p-4 flow-root">
