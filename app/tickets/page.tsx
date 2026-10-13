@@ -112,7 +112,7 @@ export default async function TicketsPage({
                       {ticket.priority}
                     </td>
                     <td className="px-6 py-4  text-sm text-gray-500">
-                      {ticket.status || "-"}
+                      {ticket.status}
                     </td>
                     <td className="px-6 py-4  text-sm text-gray-500">
                       <div className="low-root">
@@ -122,7 +122,7 @@ export default async function TicketsPage({
                             'use server';
                             await updateStatus(formData);
                           }} 
-                          className="p-4 float-center inline"
+                          className="p-4 inline"
                           >
                           <label htmlFor="status" className="block text-sm font-medium mb-1">
                             Update Ticket Status:
@@ -130,7 +130,7 @@ export default async function TicketsPage({
                           <select
                             id="status"
                             name="status"
-                            className="p-2 border rounded bg-white text-gray-800"
+                            className="p-2 border bg-white text-gray-800"
                             required
                           >
                             <option value="">--select--</option>
@@ -139,7 +139,7 @@ export default async function TicketsPage({
                             <option value="closed">closed</option>
                           </select>
                           <input type="hidden" name="id" value={ticket.id} />
-                          <button className="px-2 py-1 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700">
+                          <button className="p-2 border bg-indigo-600 text-white hover:bg-indigo-700">
                             Save
                           </button>
                         </form>
@@ -149,10 +149,10 @@ export default async function TicketsPage({
                             "use server";
                             await deleteTicket(formData);
                           }}
-                          className="ml-15 mr-15 inline"
+                          className="m-10 inline"
                         >
                           <input type="hidden" name="id" value={ticket.id} />
-                          <button className="px-2 py-1 bg-gray-600 text-white rounded-lg hover:bg-gray-700">
+                          <button className="mt-10 mb-5 px-2 py-1 bg-gray-600 text-white rounded-lg hover:bg-gray-700">
                             Delete
                           </button>
                         </form>
